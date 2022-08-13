@@ -4,8 +4,7 @@ const mongoose = require('mongoose')
 // these options are to not let mongoose use deprecated features of the mongo driver
 const options = {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
+    useUnifiedTopology: true
 }
 
 async function mongo(dbName) {

@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 const getModel = require('./model_cache')
 const TournamentSchema = new Schema({
     name: {
-        type: string,
+        type: String,
         required: [true, 'A tournament must have a name']
     },
     startdate: {
@@ -15,10 +15,10 @@ const TournamentSchema = new Schema({
         type: Date,
         required: [true, 'A tournament must have a date']
     },
-    // logo: string,
-    prize: string,
+    // logo: String,
+    prize: String,
     region: {
-        type: string,
+        type: String,
         required: [true, 'A tournament must be in a region']
     },
     teams: [{

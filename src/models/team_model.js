@@ -4,19 +4,19 @@ const Schema = mongoose.Schema
 const getModel = require('./model_cache')
 const TeamSchema = new Schema({
     teamname: {
-        type: string,
+        type: String,
         required: [true, 'A team must have a name']
     },
     country: {
-        type: string,
+        type: String,
         required: [true, 'A team must play under a flag']
     },
     ranking: {
-        type: number,
+        type: Number,
         required: [true, 'A team must have a ranking']
     },
     // logo: {
-    //     type: string,
+    //     type: String,
     //     required: [true, 'A team must have a logo']
     // },
     players: [{

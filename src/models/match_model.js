@@ -4,11 +4,8 @@ const Schema = mongoose.Schema
 const getModel = require('./model_cache')
 const MatchSchema = new Schema({
     name: {
-        type: string,
+        type: String,
         required: [true, 'A match must have a name']
-    },
-    result: {
-        type: string
     },
     winner: {
         type: Schema.Types.ObjectId,
@@ -19,11 +16,26 @@ const MatchSchema = new Schema({
         type: Date,
         required: [true, 'A match must have a date']
     },
-    teams: [{
+    map: {
+        type: String,
+        required: [true, 'A match must be played on a map']
+    },
+    team1: {
         type: Schema.Types.ObjectId,
         ref: 'teams',
         autopopulate: true
-    }]
+    },
+    team2: {
+        type: Schema.Types.ObjectId,
+        ref: 'teams',
+        autopopulate: true
+    },
+    resultteam1: {
+        type: Number
+    },
+    resultteam2: {
+        type: Number
+    }
 
 })
 

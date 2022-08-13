@@ -4,30 +4,30 @@ const getModel = require('./model_cache')
 
 const PlayerSchema = new Schema({
     gamertag: {
-        type: string,
+        type: String,
         required: [true, 'a player must have a gamertag']
     },
     fullname: {
-        type: string,
+        type: String,
         required: [true, 'a player must have a real name']
     },
     // picture: {
 
     // },
-    rating: number,
-    country: string,
+    rating: Number,
+    country: String,
     team: {
         type: Schema.Types.ObjectId,
         ref: "team",
         autopopulate: true
     },
     agents: [{
-        name: string
+        name: String
     }]
 
 
 })
 
-MeetingSchema.plugin(require("mongoose-autopopulate"));
+PlayerSchema.plugin(require("mongoose-autopopulate"));
 
 module.exports = getModel('players', PlayerSchema)
