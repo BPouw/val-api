@@ -3,6 +3,7 @@ const Schema = mongoose.Schema
 const getModel = require('./model_cache')
 
 const PlayerSchema = new Schema({
+    _id: String,
     gamertag: {
         type: String,
         required: [true, 'a player must have a gamertag']
