@@ -18,22 +18,6 @@ class CrudController {
     getAll = async (req, res, next) => {
         const entities = await this.model.find()
         res.status(200).send(entities)
-
-        authcontroller.getEmployeeFromToken(req, res, next, (error, result) => {
-            if (error) {
-                console.log(error)
-            } else {
-                var payload = {
-                    message : {
-                        entities: entities,
-                        employee: result,
-                        method: "getAll"
-                    }
-                
-                }
-                Logger.send(payload)
-            }
-        })
     }
 
     getOne = async (req, res, next) => {
