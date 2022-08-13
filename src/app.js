@@ -73,6 +73,7 @@ app.use("*", function (err, req, res, next) {
 
 app.use('*', errors.handlers)
 
+//unexpected
 app.use("*", function (err, req, res, next) {
   res.status(500).json({
     message: "something really unexpected happened",

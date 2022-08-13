@@ -14,7 +14,7 @@ const PlayerSchema = new Schema({
     // picture: {
 
     // },
-    rating: Number,
+    earnings: Number,
     country: String,
     team: {
         type: Schema.Types.ObjectId,
@@ -22,7 +22,7 @@ const PlayerSchema = new Schema({
         autopopulate: true
     },
     agents: [{
-        name: String
+        type: String
     }]
 
 
