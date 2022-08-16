@@ -15,10 +15,10 @@ const TeamSchema = new Schema({
         type: Number,
         required: [true, 'A team must have a ranking']
     },
-    // logo: {
-    //     type: String,
-    //     required: [true, 'A team must have a logo']
-    // },
+    logo: {
+        type: String,
+        required: [true, 'A team must have a logo']
+    },
     players: [{
         type: Schema.Types.ObjectId,
         ref: "players",
