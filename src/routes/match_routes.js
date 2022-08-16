@@ -20,6 +20,6 @@ router.put("/matches/:id", matchCrudController.update);
 router.delete("/matches/:id", matchCrudController.delete);
 
 // get a batch of matches
-router.get("/matches/:id/:amount/:batch", matchCrudController.getBatch)
+router.get("/matches/:amount/:batch", matchCrudController.getBatch)
 
 module.exports = router;
