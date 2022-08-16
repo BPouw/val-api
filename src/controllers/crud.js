@@ -24,7 +24,18 @@ class CrudController {
         const entity = await this.model.findById(req.params.id)
         res.status(200).send(entity)
     }
+    
+    getBatch = async (req, res) => {
+        const startIndex = req.params.batch * req.params.amount
+        let entities = await this.model.find()
+        let response = []
 
+        await entities.sort((a,b) => {new Date(a.date) - new Date(b.date)})
+        await entities.slice(startIndex, startIndex + req.params.amount).map(item => {
+            response.push(item)
+        })
+        res.status(200).send(response)
+    }
 
     update = async (req, res, next) => {
         await this.model.findByIdAndUpdate(req.params.id, req.body) 
