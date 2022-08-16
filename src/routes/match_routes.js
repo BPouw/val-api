@@ -19,4 +19,7 @@ router.put("/matches/:id", matchCrudController.update);
 // remove a match
 router.delete("/matches/:id", matchCrudController.delete);
 
+// get a batch of matches
+router.get("/matches/:id/:amount/:batch", matchCrudController.getBatch)
+
 module.exports = router;
