@@ -52,7 +52,7 @@ const tournamentRoutes = require("./routes/tournament_routes")
 
 app.use('/api', playerRoutes)
 app.use('/api', teamRoutes)
-// app.use("/api", matchRoutes)
+app.use("/api", matchRoutes)
 app.use("/api", tournamentRoutes)
 
 const errors = require('./errors')
