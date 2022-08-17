@@ -11,9 +11,7 @@ const PlayerSchema = new Schema({
         type: String,
         required: [true, 'a player must have a real name']
     },
-    // picture: {
-
-    // },
+    picture: String,
     earnings: Number,
     country: String,
     team: {
