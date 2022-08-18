@@ -17,7 +17,7 @@ const PlayerSchema = new Schema({
     team: {
         type: Schema.Types.ObjectId,
         ref: "teams",
-        autopopulate: false
+        autopopulate: {maxDepth: 2}
     },
     agents: [{
         type: String
