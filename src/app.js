@@ -23,19 +23,19 @@ app.use(express.json());
 // on a different origin (url)
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 // Add CORS headers
-// app.use(function (req, res, next) {
-//   res.setHeader('Access-Control-Allow-Origin', '*')
-//   res.setHeader(
-//     'Access-Control-Allow-Methods',
-//     'GET, POST, OPTIONS, PUT, PATCH, DELETE'
-//   )
-//   res.setHeader(
-//     'Access-Control-Allow-Headers',
-//     'x-access-token, X-Requested-With,content-type,authorization'
-//   )
-//   res.setHeader('Access-Control-Allow-Credentials', true)
-//   next()
-// })
+app.use(function (req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader(
+    'Access-Control-Allow-Methods',
+    'GET, POST, OPTIONS, PUT, PATCH, DELETE'
+  )
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'x-access-token, X-Requested-With,content-type,authorization'
+  )
+  res.setHeader('Access-Control-Allow-Credentials', true)
+  next()
+})
 
 // not the topic of this example, but good to be aware of security issues
 // helmet sets headers to avoid common security risks
