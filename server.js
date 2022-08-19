@@ -8,7 +8,7 @@ const app = require('./src/app')
 // the order of starting the app and connecting to the database does not matter
 // since mongoose buffers queries till there is a connection
 
-
+// whats wrong? :(
 // start the app
 const port = process.env.PORT || 80
 app.listen(port, () => {
