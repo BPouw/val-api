@@ -10,7 +10,7 @@ const MatchSchema = new Schema({
     winner: {
         type: Schema.Types.ObjectId,
         ref: 'teams',
-        autopopulate: true
+        autopopulate: {maxDepth: 1}
     },
     date: {
         type: Date,
@@ -23,12 +23,12 @@ const MatchSchema = new Schema({
     team1: {
         type: Schema.Types.ObjectId,
         ref: 'teams',
-        autopopulate: true
+        autopopulate: {maxDepth: 2}
     },
     team2: {
         type: Schema.Types.ObjectId,
         ref: 'teams',
-        autopopulate: true
+        autopopulate: {maxDepth: 2}
     },
     resultteam1: {
         type: Number

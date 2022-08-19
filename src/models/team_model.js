@@ -22,17 +22,17 @@ const TeamSchema = new Schema({
     players: [{
         type: Schema.Types.ObjectId,
         ref: "players",
-        autopopulate: true
+        autopopulate: {maxDepth: 2}
     }],
     matches: [{
         type: Schema.Types.ObjectId,
         ref: "matches",
-        autopopulate: true
+        autopopulate: {maxDepth: 2}
     }],
     tournaments: [{
         type: Schema.Types.ObjectId,
         ref: "tournaments",
-        autopopulate: true
+        autopopulate: {maxDepth: 2}
     }],
 })
 
