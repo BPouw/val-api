@@ -5,9 +5,11 @@ const connect = require('./connect')
 
 const app = require('./src/app')
 
+var cors = require('cors')
 // the order of starting the app and connecting to the database does not matter
 // since mongoose buffers queries till there is a connection
 
+app.use(cors())
 
 // start the app
 const port = process.env.PORT || 80
