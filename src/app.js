@@ -13,6 +13,8 @@ const helmet = require("helmet");
 
 const morgan = require("morgan");
 
+const cookieSession = require("cookie-session")
+
 // parse json body of incoming request
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -24,7 +26,7 @@ app.use(express.json());
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 // Add CORS headers
 app.use(function (req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader('Access-Control-Allow-Origin', 'https://val-webapp.vercel.app/')
   res.setHeader(
     'Access-Control-Allow-Methods',
     'GET, POST, OPTIONS, PUT, PATCH, DELETE'
@@ -45,15 +47,29 @@ app.use(helmet());
 // use morgan for logging
 app.use(morgan("dev"));
 
+app.use(express.urlencoded({extended: true}))
+
+app.use(express.json())
+
+app.use(
+  cookieSession({
+    name: "val-session",
+    secret: process.env.SERVER_SECRET,
+    httpOnly: true
+  })
+)
+
 const playerRoutes = require("./routes/player_routes")
 const teamRoutes = require("./routes/team_routes")
 const matchRoutes = require("./routes/match_routes")
 const tournamentRoutes = require("./routes/tournament_routes")
+const authRoutes = require("./routes/auth_routes")
 
 app.use('/api', playerRoutes)
 app.use('/api', teamRoutes)
 app.use("/api", matchRoutes)
 app.use("/api", tournamentRoutes)
+app.use("/api", authRoutes)
 
 const errors = require('./errors')
 
