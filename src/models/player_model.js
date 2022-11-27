@@ -21,9 +21,12 @@ const PlayerSchema = new Schema({
     },
     agents: [{
         type: String
-    }]
-
-
+    }],
+    author: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        autopopulate: {maxDepth: 1}
+    }
 })
 
 PlayerSchema.plugin(require("mongoose-autopopulate"));
