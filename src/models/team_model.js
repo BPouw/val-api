@@ -34,6 +34,11 @@ const TeamSchema = new Schema({
         ref: "tournaments",
         autopopulate: {maxDepth: 2}
     }],
+    author: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        autopopulate: {maxDepth: 1}
+    }
 })
 
 TeamSchema.plugin(require("mongoose-autopopulate"));

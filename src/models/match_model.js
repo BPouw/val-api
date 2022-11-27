@@ -35,6 +35,11 @@ const MatchSchema = new Schema({
     },
     resultteam2: {
         type: Number
+    },
+    author: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        autopopulate: {maxDepth: 1}
     }
 
 })
