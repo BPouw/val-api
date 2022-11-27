@@ -26,7 +26,7 @@ app.use(express.json());
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 // Add CORS headers
 app.use(function (req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200')
+  res.setHeader('Access-Control-Allow-Origin', 'https://val-webapp.vercel.app')
   res.setHeader(
     'Access-Control-Allow-Methods',
     'GET, POST, OPTIONS, PUT, PATCH, DELETE'
