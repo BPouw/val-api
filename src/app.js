@@ -26,7 +26,7 @@ app.use(express.json());
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 // Add CORS headers
 app.use(function (req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', 'https://val-webapp.vercel.app')
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200')
   res.setHeader(
     'Access-Control-Allow-Methods',
     'GET, POST, OPTIONS, PUT, PATCH, DELETE'
@@ -62,14 +62,14 @@ app.use(
 const playerRoutes = require("./routes/player_routes")
 const teamRoutes = require("./routes/team_routes")
 const matchRoutes = require("./routes/match_routes")
-const tournamentRoutes = require("./routes/tournament_routes")
 const authRoutes = require("./routes/auth_routes")
+const mapRoutes = require("./routes/map_routes")
 
 app.use('/api', playerRoutes)
 app.use('/api', teamRoutes)
 app.use("/api", matchRoutes)
-app.use("/api", tournamentRoutes)
 app.use("/api", authRoutes)
+app.use("/api", mapRoutes)
 
 const errors = require('./errors')
 

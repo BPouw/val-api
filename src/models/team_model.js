@@ -29,11 +29,6 @@ const TeamSchema = new Schema({
         ref: "matches",
         autopopulate: {maxDepth: 2}
     }],
-    tournaments: [{
-        type: Schema.Types.ObjectId,
-        ref: "tournaments",
-        autopopulate: {maxDepth: 2}
-    }],
     author: {
         type: Schema.Types.ObjectId,
         ref: "User",
