@@ -13,20 +13,22 @@ const teamCrudController = new crudController(team);
 const playerController = new PlayerController(player);
 const matchController = new MatchController(match);
 
+const {authJwt} = require("../middleware")
+
 // get all teams
 router.get("/teams", teamCrudController.getAll);
 
 // create a team
-router.post("/teams", teamCrudController.create);
+router.post("/teams",authJwt.verifyToken, teamCrudController.create);
 
 // get a team
 router.get("/teams/:id", teamCrudController.getOne);
 
 // update a team
-router.put("/teams/:id", teamCrudController.update);
+router.put("/teams/:id",authJwt.verifyToken, teamCrudController.update);
 
 // remove a team
-router.delete("/teams/:id", teamCrudController.delete);
+router.delete("/teams/:id",authJwt.verifyToken, teamCrudController.delete);
 
 // get players
 router.get("/teams/:id/players", playerController.getPlayers)
