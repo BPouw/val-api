@@ -17,8 +17,9 @@ const MatchSchema = new Schema({
         required: [true, 'A match must have a date']
     },
     map: {
-        type: String,
-        required: [true, 'A match must be played on a map']
+        type: Schema.Types.ObjectId,
+        ref: 'maps',
+        autopopulate: {maxDepth: 1}
     },
     team1: {
         type: Schema.Types.ObjectId,
