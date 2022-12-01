@@ -64,12 +64,14 @@ const teamRoutes = require("./routes/team_routes")
 const matchRoutes = require("./routes/match_routes")
 const authRoutes = require("./routes/auth_routes")
 const mapRoutes = require("./routes/map_routes")
+const userRoutes = require("./routes/user_routes")
 
 app.use('/api', playerRoutes)
 app.use('/api', teamRoutes)
 app.use("/api", matchRoutes)
 app.use("/api", authRoutes)
 app.use("/api", mapRoutes)
+app.use("/api", userRoutes)
 
 const errors = require('./errors')
 
