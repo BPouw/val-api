@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const crudController = require("../controllers/crud");
 const player = require("../models/player_model")();
-const {authJwt} = require("../middleware")
+const { authJwt } = require("../middleware");
 const playerCrudController = new crudController(player);
 
 // get all players
@@ -15,9 +15,9 @@ router.post("/players", authJwt.verifyToken, playerCrudController.create);
 router.get("/players/:id", playerCrudController.getOne);
 
 // update a player
-router.put("/players/:id",authJwt.verifyToken, playerCrudController.update);
+router.put("/players/:id", authJwt.verifyToken, playerCrudController.update);
 
 // remove a player
-router.delete("/players/:id",authJwt.verifyToken, playerCrudController.delete);
+router.delete("/players/:id", authJwt.verifyToken, playerCrudController.delete);
 
 module.exports = router;

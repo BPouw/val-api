@@ -9,7 +9,7 @@ verifyToken = (req, res, next) => {
   }
 
   jwt.verify(token, config.secret, (err, decoded) => {
-    console.log("verify token")
+    console.log("verify token");
     if (err) {
       return res.status(401).send({ message: "Unauthorized!" });
     }
@@ -19,7 +19,7 @@ verifyToken = (req, res, next) => {
 };
 
 const authJwt = {
-    verifyToken,
-  };
-  
-  module.exports = authJwt;
+  verifyToken,
+};
+
+module.exports = authJwt;

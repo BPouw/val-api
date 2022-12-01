@@ -13,7 +13,7 @@ const helmet = require("helmet");
 
 const morgan = require("morgan");
 
-const cookieSession = require("cookie-session")
+const cookieSession = require("cookie-session");
 
 // parse json body of incoming request
 app.use(bodyParser.json());
@@ -26,18 +26,18 @@ app.use(express.json());
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 // Add CORS headers
 app.use(function (req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200')
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
   res.setHeader(
-    'Access-Control-Allow-Methods',
-    'GET, POST, OPTIONS, PUT, PATCH, DELETE'
-  )
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+  );
   res.setHeader(
-    'Access-Control-Allow-Headers',
-    'x-access-token, X-Requested-With,content-type,authorization'
-  )
-  res.setHeader('Access-Control-Allow-Credentials', true)
-  next()
-})
+    "Access-Control-Allow-Headers",
+    "x-access-token, X-Requested-With,content-type,authorization"
+  );
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  next();
+});
 
 // not the topic of this example, but good to be aware of security issues
 // helmet sets headers to avoid common security risks
@@ -47,33 +47,33 @@ app.use(helmet());
 // use morgan for logging
 app.use(morgan("dev"));
 
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({ extended: true }));
 
-app.use(express.json())
+app.use(express.json());
 
 app.use(
   cookieSession({
     name: "val-session",
     secret: process.env.SERVER_SECRET,
-    httpOnly: true
+    httpOnly: true,
   })
-)
+);
 
-const playerRoutes = require("./routes/player_routes")
-const teamRoutes = require("./routes/team_routes")
-const matchRoutes = require("./routes/match_routes")
-const authRoutes = require("./routes/auth_routes")
-const mapRoutes = require("./routes/map_routes")
-const userRoutes = require("./routes/user_routes")
+const playerRoutes = require("./routes/player_routes");
+const teamRoutes = require("./routes/team_routes");
+const matchRoutes = require("./routes/match_routes");
+const authRoutes = require("./routes/auth_routes");
+const mapRoutes = require("./routes/map_routes");
+const userRoutes = require("./routes/user_routes");
 
-app.use('/api', playerRoutes)
-app.use('/api', teamRoutes)
-app.use("/api", matchRoutes)
-app.use("/api", authRoutes)
-app.use("/api", mapRoutes)
-app.use("/api", userRoutes)
+app.use("/api", playerRoutes);
+app.use("/api", teamRoutes);
+app.use("/api", matchRoutes);
+app.use("/api", authRoutes);
+app.use("/api", mapRoutes);
+app.use("/api", userRoutes);
 
-const errors = require('./errors')
+const errors = require("./errors");
 
 // catch all not found response
 app.use("*", function (_, res) {
@@ -89,7 +89,7 @@ app.use("*", function (err, req, res, next) {
   next(err);
 });
 
-app.use('*', errors.handlers)
+app.use("*", errors.handlers);
 
 //unexpected
 app.use("*", function (err, req, res, next) {
