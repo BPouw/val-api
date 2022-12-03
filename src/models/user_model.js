@@ -10,10 +10,9 @@ const UserSchema = new Schema({
     type: String,
     required: [true, "A user must have a password"],
   },
-  role: {
+  country: {
     type: String,
-    enum: ["user", "admin"],
-    default: "user",
+    required: [true, "A user must have a country"],
   },
 });
 

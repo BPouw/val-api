@@ -15,9 +15,9 @@ router.post("/players", authJwt.verifyToken, playerCrudController.create);
 router.get("/players/:id", playerCrudController.getOne);
 
 // update a player
-router.put("/players/:id", authJwt.verifyToken, playerCrudController.update);
+router.put("/players/:id", authJwt.verifyToken, authJwt.verifyAuthor, playerCrudController.update);
 
 // remove a player
-router.delete("/players/:id", authJwt.verifyToken, playerCrudController.delete);
+router.delete("/players/:id", authJwt.verifyToken, authJwt.verifyAuthor, playerCrudController.delete);
 
 module.exports = router;

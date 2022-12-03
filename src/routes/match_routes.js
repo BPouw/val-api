@@ -15,9 +15,9 @@ router.post("/matches", authJwt.verifyToken, matchCrudController.create);
 router.get("/matches/:id", matchCrudController.getOne);
 
 // update a match
-router.put("/matches/:id", authJwt.verifyToken, matchCrudController.update);
+router.put("/matches/:id", authJwt.verifyToken, authJwt.verifyAuthor, matchCrudController.update);
 
 // remove a match
-router.delete("/matches/:id", authJwt.verifyToken, matchCrudController.delete);
+router.delete("/matches/:id", authJwt.verifyToken, authJwt.verifyAuthor, matchCrudController.delete);
 
 module.exports = router;

@@ -25,10 +25,10 @@ router.post("/teams", authJwt.verifyToken, teamCrudController.create);
 router.get("/teams/:id", teamCrudController.getOne);
 
 // update a team
-router.put("/teams/:id", authJwt.verifyToken, teamCrudController.update);
+router.put("/teams/:id", authJwt.verifyToken, authJwt.verifyAuthor, teamCrudController.update);
 
 // remove a team
-router.delete("/teams/:id", authJwt.verifyToken, teamCrudController.delete);
+router.delete("/teams/:id", authJwt.verifyToken, authJwt.verifyAuthor, teamCrudController.delete);
 
 // get players
 router.get("/teams/:id/players", playerController.getPlayers);

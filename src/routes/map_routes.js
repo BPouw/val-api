@@ -15,9 +15,9 @@ router.post("/maps", authJwt.verifyToken, mapCrudController.create);
 router.get("/maps/:id", mapCrudController.getOne);
 
 // update a map
-router.put("/maps/:id", authJwt.verifyToken, mapCrudController.update);
+router.put("/maps/:id", authJwt.verifyToken, authJwt.verifyAuthor, mapCrudController.update);
 
 // remove a map
-router.delete("/maps/:id", authJwt.verifyToken, mapCrudController.delete);
+router.delete("/maps/:id", authJwt.verifyToken, authJwt.verifyAuthor, mapCrudController.delete);
 
 module.exports = router;
