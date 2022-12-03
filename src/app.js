@@ -24,7 +24,7 @@ app.use(express.json());
 // you don't need it for this example, but you will if you host a frontend
 // on a different origin (url)
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
-// Add CORS headers
+// Add CORS headers mm
 app.use(function (req, res, next) {
   res.setHeader("Access-Control-Allow-Origin", "https://val-webapp.vercel.app/");
   res.setHeader(
