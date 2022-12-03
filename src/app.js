@@ -26,7 +26,7 @@ app.use(express.json());
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 // Add CORS headers mm
 app.use(function (req, res, next) {
-  res.setHeader("Access-Control-Allow-Origin", "https://val-webapp.vercel.app/");
+  res.setHeader("Access-Control-Allow-Origin", "https://val-webapp.vercel.app");
   res.setHeader(
     "Access-Control-Allow-Methods",
     "GET, POST, OPTIONS, PUT, PATCH, DELETE"
@@ -78,7 +78,7 @@ const errors = require("./errors");
 // catch all not found response
 app.use("*", function (_, res) {
   res.status(404).json({
-    message: "something really unexpected happened",
+    message: "could not find resource",
   });
 });
 
@@ -94,7 +94,7 @@ app.use("*", errors.handlers);
 //unexpected
 app.use("*", function (err, req, res, next) {
   res.status(500).json({
-    message: "something really unexpected happened",
+    message: "application error",
   });
 });
 
