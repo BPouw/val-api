@@ -20,10 +20,10 @@ async function mongo(dbName) {
   }
 }
 
-async function neo(dbName) {
+async function neo() {
   try {
-    neo4j.connect(dbName);
-    console.log(`connection to neo4J DB ${dbName} established`);
+    neo4j.connect();
+    console.log(`connection to neo4J established`);
   } catch (err) {
     console.error(err);
   }

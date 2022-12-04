@@ -29,4 +29,12 @@ router.get("/users/:id/players", playerController.getUserPlayers);
 
 router.get("/users/:id/maps", mapController.getUserMaps);
 
+router.post("/users/:id/follow", userController.follow);
+
+router.post("/users/:id/unfollow", userController.unfollow);
+
+router.get("/users/:id/following" , userController.following)
+
+router.get("/users/:id/followers" , userController.followers)
+
 module.exports = router;
