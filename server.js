@@ -13,4 +13,4 @@ app.listen(port, () => {
 
 // connect to the database
 connect.mongo(process.env.MONGO_DB_NAME);
-connect.neo(process.env.NEO4J_DB_NAME);
+connect.neo();
