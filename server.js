@@ -14,3 +14,5 @@ app.listen(port, () => {
 // connect to the database
 connect.mongo(process.env.MONGO_DB_NAME);
 connect.neo();
+
+module.exports = app
