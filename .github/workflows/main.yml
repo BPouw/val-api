@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy to Heroku and run tests
 
 on:
   push:
@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Install Dependencies
         run: npm install
-      -name: Run tests
+      - name: Run tests
         run: npm test
       - uses: akhileshns/heroku-deploy@v3.12.12
         with:
