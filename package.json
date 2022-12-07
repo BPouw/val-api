@@ -5,7 +5,7 @@
   "main": "index.js",
   "start": "node index.js",
   "scripts": {
-    "test": "mocha 'test/*.test.js' --recursive --timeout 10000"
+    "test": "mocha 'test/*.test.js' --recursive --timeout 10000 --exit"
   },
   "author": "Boris Pouw",
   "license": "ISC",
