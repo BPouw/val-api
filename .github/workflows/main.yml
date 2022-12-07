@@ -12,6 +12,11 @@ jobs:
       - uses: actions/checkout@v2
       - name: Install Dependencies
         run: npm install
+      - name: create env file
+        run: |
+          touch .env
+          echo MONGO_URL=${{ secrets.MONGO_URL }} >> .env
+          echo SERVER_SECRET=${{ secrets.SERVER_SECRET }} >> .env
       - name: Run tests
         run: npm test
       - uses: akhileshns/heroku-deploy@v3.12.12
