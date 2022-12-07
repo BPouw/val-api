@@ -5,7 +5,6 @@ class CrudController {
   }
 
   create = async (req, res, next) => {
-    console.log(req.body);
 
     const entity = new this.model(req.body);
     await entity.save();

@@ -7,13 +7,12 @@ exports.getOne = async (req, res) => {
 };
 
 exports.follow = async (req, res) => {
-
   if (!req.body.followUser) {
-    return res.status(404).send({message: "No user to follow was given!"});
+    return res.status(404).send({ message: "No user to follow was given!" });
   }
 
   if (req.body.followUser === req.params.id) {
-    return res.status(418).send({message: "You can not follow yourself"})
+    return res.status(418).send({ message: "You can not follow yourself" });
   }
 
   const user = await User.findById(req.params.id);
@@ -26,57 +25,57 @@ exports.follow = async (req, res) => {
     userToFollowName: userToFollow.username.toString(),
     userToFollowId: userToFollow._id.toString(),
     userName: user.username.toString(),
-    userId: user._id.toString()
-  })
+    userId: user._id.toString(),
+  });
 
   session.close();
 
-  res.status(201).send({message: `Succesfully followed user ${userToFollow.username}`})
-
-}
+  res
+    .status(201)
+    .send({ message: `Succesfully followed user ${userToFollow.username}` });
+};
 
 exports.unfollow = async (req, res) => {
   if (!req.body.unfollowUser) {
-    return res.status(404).send({message: "No user to follow was given!"});
+    return res.status(404).send({ message: "No user to follow was given!" });
   }
 
   if (req.body.unfollowUser === req.params.id) {
-    return res.status(418).send({message: "You can not follow yourself"})
+    return res.status(418).send({ message: "You can not follow yourself" });
   }
 
   const session = neo.session();
 
   await session.run(neo.unfollow, {
     userToUnfollowId: req.body.unfollowUser,
-    userId: req.params.id
-  })
+    userId: req.params.id,
+  });
 
   session.close();
 
-  res.status(200).send({message: `Succesfully unfollowed`})
-
-}
+  res.status(200).send({ message: `Succesfully unfollowed` });
+};
 
 exports.following = async (req, res) => {
   const session = neo.session();
 
   const result = await session.run(neo.following, {
-    userId: req.params.id
-  })
+    userId: req.params.id,
+  });
 
   session.close();
 
-  res.status(200).json({following: result.records.length})
-}
+  res.status(200).json({ following: result.records.length });
+};
 
 exports.followers = async (req, res) => {
   const session = neo.session();
 
   const result = await session.run(neo.followers, {
-    userId: req.params.id
-  })
+    userId: req.params.id,
+  });
 
   session.close();
 
-  res.status(200).json({followers: result.records.length})
-}
+  res.status(200).json({ followers: result.records.length });
+};

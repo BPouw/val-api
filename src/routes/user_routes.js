@@ -33,8 +33,8 @@ router.post("/users/:id/follow", userController.follow);
 
 router.post("/users/:id/unfollow", userController.unfollow);
 
-router.get("/users/:id/following" , userController.following)
+router.get("/users/:id/following", userController.following);
 
-router.get("/users/:id/followers" , userController.followers)
+router.get("/users/:id/followers", userController.followers);
 
 module.exports = router;

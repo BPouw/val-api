@@ -15,4 +15,4 @@ app.listen(port, () => {
 connect.mongo(process.env.MONGO_DB_NAME);
 connect.neo();
 
-module.exports = app
+module.exports = app;

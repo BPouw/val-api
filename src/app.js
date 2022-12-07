@@ -27,12 +27,12 @@ app.use(express.json());
 // Add CORS headers mm
 app.use(function (req, res, next) {
   const corsWhitelist = [
-    'http://localhost:4200',
-    'https://val-webapp.vercel.app',
+    "http://localhost:4200",
+    "https://val-webapp.vercel.app",
   ];
-  
+
   if (corsWhitelist.indexOf(req.headers.origin) !== -1) {
-    res.header('Access-Control-Allow-Origin', req.headers.origin);
+    res.header("Access-Control-Allow-Origin", req.headers.origin);
   }
 
   res.setHeader(
