@@ -16,8 +16,6 @@ chai.use(chaiHttp);
 
 const agent = chai.request.agent(server);
 
-console.log(`Running tests using database '${process.env.MONGO_DB_NAME}'`);
-
 describe("Set up the test", () => {
   it("Login", (done) => {
     agent
