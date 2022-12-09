@@ -53,7 +53,7 @@ exports.unfollow = async (req, res) => {
 
   session.close();
 
-  res.status(200).send({ message: `Succesfully unfollowed` });
+  res.status(204).send({ message: `Succesfully unfollowed` });
 };
 
 exports.following = async (req, res) => {
@@ -79,3 +79,15 @@ exports.followers = async (req, res) => {
 
   res.status(200).json({ followers: result.records.length });
 };
+
+exports.recommendations = async (req, res) => {
+  const session = neo.session();
+
+  const result = await session.run(neo.recommendUsers, {
+    userId: req.params.id,
+  })
+
+  session.close();
+
+  res.status(200).json({ recommended: result});
+}

@@ -42,6 +42,8 @@ describe("Team tests", () => {
         .end((err, res) => {
           objectid = res.body._id;
           res.should.have.status(201);
+          message = res.body.teamname
+          message.should.contain("Sentinels")
           done();
         });
     });
@@ -56,6 +58,8 @@ describe("Team tests", () => {
         })
         .end((err, res) => {
           res.should.have.status(400);
+          message = res.body.message
+          message.should.equal('teams validation failed: logo: A team must have a logo')
           done();
         });
     });
@@ -65,6 +69,8 @@ describe("Team tests", () => {
     it("Should get the new team", (done) => {
       agent.get("/api/teams/" + objectid).end((err, res) => {
         res.should.have.status(200);
+        message = res.body.teamname
+        message.should.equal("Sentinels")
         done();
       });
     });

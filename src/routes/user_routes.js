@@ -37,4 +37,6 @@ router.get("/users/:id/following", userController.following);
 
 router.get("/users/:id/followers", userController.followers);
 
+router.get("users/:id/recommend", userController.recommendations);
+
 module.exports = router;

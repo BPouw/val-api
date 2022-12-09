@@ -42,6 +42,8 @@ describe("map tests", () => {
         .end((err, res) => {
           objectid = res.body._id;
           res.should.have.status(201);
+          message = res.body.name
+          message.should.contain("Haven")
           done();
         });
     });
@@ -57,21 +59,25 @@ describe("map tests", () => {
           })
         .end((err, res) => {
           res.should.have.status(400);
+          message = res.body.message
+          message.should.equal('maps validation failed: thumbnail: A map must have a thumbnail')
           done();
         });
     });
   });
 
   describe("Get map", () => {
-    it("Should get the new team", (done) => {
+    it("Should get the new map", (done) => {
       agent.get("/api/maps/" + objectid).end((err, res) => {
         res.should.have.status(200);
+        message = res.body.name
+        message.should.equal("Haven")
         done();
       });
     });
 
     it("Should not find a map that does not exist", (done) => {
-      agent.get("/api/maps/somethingrandom").end((err, res) => {
+      agent.get("/api/maps/63939cd81f06daa1c720cr90").end((err, res) => {
         res.should.have.status(400);
         done();
       });

@@ -37,8 +37,9 @@ describe("follow tests", () => {
           followUser: followid
         })
         .end((err, res) => {
-            console.log(res)
           res.should.have.status(201);
+          let message = res.body.message
+          message.should.contain('Succesfully followed user')
           done();
         })
     })
@@ -50,7 +51,7 @@ describe("follow tests", () => {
           unfollowUser: followid
         })
         .end((err, res) => {
-          res.should.have.status(200);
+          res.should.have.status(204);
           done();
         })
     })

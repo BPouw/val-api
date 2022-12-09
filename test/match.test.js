@@ -97,6 +97,8 @@ describe("match tests", () => {
         .end((err, res) => {
           objectid = res.body._id;
           res.should.have.status(201);
+          let message = res.body.name
+          message.should.contain("Val test match")
           done();
         });
     });
@@ -116,6 +118,8 @@ describe("match tests", () => {
         })
         .end((err, res) => {
           res.should.have.status(400);
+          message = res.body.message
+          message.should.equal('matches validation failed: name: A match must have a name')
           done();
         });
     });
@@ -125,6 +129,8 @@ describe("match tests", () => {
     it("Should get the new team", (done) => {
       agent.get("/api/matches/" + objectid).end((err, res) => {
         res.should.have.status(200);
+        message = res.body.name
+        message.should.equal("Val test match")
         done();
       });
     });

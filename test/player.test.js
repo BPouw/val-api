@@ -60,8 +60,9 @@ describe("Player tests", () => {
         })
         .end((err, res) => {
           objectid = res.body._id;
-          console.log(objectid)
           res.should.have.status(201);
+          message = res.body.gamertag
+          message.should.contain("Pouw")
           done();
         });
     });
@@ -79,6 +80,8 @@ describe("Player tests", () => {
         })
         .end((err, res) => {
           res.should.have.status(400);
+          message = res.body.message
+          message.should.equal('players validation failed: fullname: a player must have a real name')
           done();
         });
     });
@@ -88,6 +91,8 @@ describe("Player tests", () => {
     it("Should get the new team", (done) => {
       agent.get("/api/players/" + objectid).end((err, res) => {
         res.should.have.status(200);
+        message = res.body.gamertag
+        message.should.equal("Pouw")
         done();
       });
     });

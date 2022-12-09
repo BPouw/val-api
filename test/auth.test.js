@@ -28,6 +28,10 @@ describe("Register", () => {
       })
       .end((err, res) => {
         res.should.have.status(400);
+
+        let error = res.body.message;
+
+        error.should.equal("Username has already been taken")
         done();
       });
   });
@@ -44,6 +48,10 @@ describe("Sign in", () => {
       .end((err, res) => {
         res.should.have.status(404);
 
+        let error = res.body.message;
+
+        error.should.equal("User not found")
+
         done();
       });
   });
@@ -59,6 +67,10 @@ describe("Sign in", () => {
         res.should.have.cookie("val-session");
         res.should.have.cookie("val-session.sig");
         res.should.have.status(200);
+
+        let message = res.body.username;
+
+        message.should.equal("Pouw")
         done();
       });
   });

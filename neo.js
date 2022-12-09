@@ -24,4 +24,7 @@ module.exports = {
     "MATCH (:User{userId: $userId})-[r:FOLLOWS]->(:User{userId: $userToUnfollowId}) DETACH DELETE r",
   following: "MATCH (:User {userId: $userId})-[r:FOLLOWS]->(u:User) RETURN u",
   followers: "MATCH (:User {userId: $userId})<-[r:FOLLOWS]-(u:User) RETURN u",
+  recommendUsers: "MATCH (user:User{userId: $userId})-[user:FOLLOWS]->(u:User)<-[mutual:FOLLOWS]-(mutual:User) WHERE user <> mutual RETURN mutual.id, count(mutual) as frequency ORDER BY frequency DESC LIMIT 5"
 };
+
+
